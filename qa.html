@@ -1,0 +1,25 @@
+#!/bin/bash
+
+##Composite 1 to 100
+# Function to check if a number is composite
+is_composite() {
+  local num=$1
+  if (( num <= 1 )); then
+    return 1 # Not composite
+  fi
+  for (( i=2; i*i<=num; i++ )); do
+    if (( num % i == 0 )); then
+      return 0 # Composite
+    fi
+  done
+  return 1 # Not composite
+}
+
+# Print composite numbers from 1 to 100
+echo "Composite numbers from 1 to 100:"
+for ((i=1; i<=100; i++)); do
+  if is_composite "$i"; then
+    echo -n "$i "
+  fi
+done
+echo ""
